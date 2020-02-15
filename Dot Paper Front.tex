@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\title{Dot Paper}
+
+\usepackage{geometry}
+\geometry{letterpaper, margin=0mm}
+
+\usepackage{tikz}
+\tikzset{x=1mm, y=1mm}
+
+\definecolor{DotsColor}{HTML}{C9C9C9}
+
+\begin{document}
+
+\newsavebox{\frontside}
+\savebox{\frontside}
+{
+	\begin{tikzpicture}[remember picture, overlay]
+
+	\color{DotsColor}
+
+	\foreach \x in {0,...,42}
+		\foreach \y in {0,...,56}
+			\filldraw (current page.south west) ++ (33.95,237.7) ++ (4*\x,-4*\y) circle (0.1);
+
+	\end{tikzpicture}
+}
+
+\usebox{\frontside}
+
+\end{document}
